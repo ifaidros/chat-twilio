@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font: 14px/1 Arial, Helvetica,sans-serif;
+    background: rgb(138, 131, 131);
+    width:100%;
+    margin: 0 auto;
+    overflow:hidden;
+}
+
+#container{
+    width: 50%;    
+    margin: 50px auto;
+}
+
+#header-div{
+    color: rgb(37, 33, 33);
+    background: rgb(127, 186, 224);
+    padding-top:20px;
+    min-height:70px;
+    border-top:#3e75ec 3px solid;
+    border-bottom:#3e75ec 3px solid;
+    text-align:center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#users-list{
+    background: rgb(96, 153, 199);
+    width: 30%;
+    height: 300px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    float: left;
+    margin: 0 auto;
+}
+
+#chat-window{
+    height: 300px;
+    background: #dfd8d8;
+    width: 70%;
+    text-align:left;
+    margin: 0 auto;
+    float: right;
+}
+
+#output p{
+    padding: 4px 0px;
+    margin: 0 10px;
+    border-bottom: 2px solid #e9e9e9;
+    color: rgb(0, 0, 0);
+}
+
+#clear{
+    clear: both;
+}
+
+#message-form{
+    margin-left: 200px;
+}
+
+button {
+    background: #328332;
+    border: none;
+    border-bottom: 2px solid #153b24;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding: .8rem;
+    transition: background .3s ease, color .3s ease;
+}
+
+button:hover {
+    background: rgb(58, 135, 112);
+}
+
+#mouse-coords{
+    font: 16px/1 Arial, Helvetica,sans-serif;
+    background: #abddab;
+    border:#000000 3px solid;
+    width: 200px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 450px) {
+    body{
+        background-color: #F09A9D;
+    }
+    #container{
+        width: 90%;
+    }
+    #message-form{
+        margin-left: 80px;
+    }
+    #input_txt {
+        width: 120px;
+        height: 30px;
+    }
+  }

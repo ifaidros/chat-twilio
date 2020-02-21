@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+        <title>Chat with Twilio</title>
+        <link href="/styles.css" rel="stylesheet" />
+        
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="header-div">
+                    <h2>Chat with Twilio</h2>
+                </div>
+            </header>
+
+            <div id="users-list">
+
+            </div>
+
+            <div id="chat-window">
+                <div id="output"></div>
+            </div>
+            <div id="clear"></div>
+
+            <form id="message-form" autocomplete="off">
+                <input id="input_txt" name="message" placeholder="Message">
+                <button id="btnSendMessage">Send</button>
+            </form>      
+            
+            <div id="buttons">
+                <button id="btnGetToken">Get Token</button>
+                <button id="btnCreateClientGetToken">Create Client</button>
+                <button id="btnGetPublicChannelDescr">Get Public Channel Descriptors</button>
+                <button id="btnGetUserChannelDescr">Get User Channel Descriptors</button>
+                <button id="btnJoinChannel">Join Channel</button>
+                <button id="btnLeaveChannel">Leave Channel</button>
+                <button id="btnGetMessages">Get Messages</button>
+                
+            </div>
+
+        </div>
+        
+
+        <script src="https://media.twiliocdn.com/sdk/js/chat/v3.3/twilio-chat.min.js"></script>
+        <script src="/js/chat.js"></script>
+    </body>
+</html>
