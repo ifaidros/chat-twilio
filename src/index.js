@@ -12,7 +12,6 @@ app.use(express.json())
 app.use(express.static(publicDirectoryPath))
 
 let availableUsers = [{'username': 'User 1'}, {'username': 'User 2'}]
-let arrayss = []
 
 app.get('/token/:username', (req, res) => {
     const id = req.params.username
@@ -68,8 +67,18 @@ app.get('/users', (req, res) => {
     res.send(availableUsers)
 })
 
+app.get('/userleft/:username', (req, res) => {
+    console.log('User left request arrived')
+    const id = req.params.username
+    console.log('idddd', id)
+    //availableUsers = [{'username': 'User 1'}, {'username': 'User 2'}]
 
+    availableUsers.push({'username': id}) 
 
+    // res.set({'Access-Control-Allow-Origin': '*'})
+    res.setHeader('Content-Type', 'application/json')
+    res.send(availableUsers)
+})
 
 app.get('*', (req, res) => {
     res.send('<h1>404 PAGE</h1>')

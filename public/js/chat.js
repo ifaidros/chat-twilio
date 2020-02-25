@@ -43,7 +43,9 @@ document.querySelector('#btnGetToken').addEventListener('click', (e) => {
     }
     getToken().then((token) => {
         ACCESS_TOKEN = token
-        console.log('---->Access Token: ', ACCESS_TOKEN)         
+        console.log('---->Access Token: ', ACCESS_TOKEN) 
+        userSelectionMenu.remove()
+        //GetAvailableUsers()        
         })
 })
 
@@ -109,7 +111,11 @@ document.querySelector('#btnJoinChannel').addEventListener('click', (e) => {
 document.querySelector('#btnLeaveChannel').addEventListener('click', (e) => {
     e.preventDefault()
     console.log('---->Leave Channel')
-    chatChannel.leave().then((result) => {console.log('---->Left the channel ' + result.friendlyName)}).catch((err) => {
+    chatChannel.leave().then((result) => {
+        console.log('---->Left the channel ' + result.friendlyName)
+        
+        
+    }).then(userleft).catch((err) => {
     console.log("Couldn't leave channel " + chatChannel.friendlyName + ' because ' + err)
     })  
 })
@@ -167,7 +173,7 @@ function GetAvailableUsers () {
         })
         divUsers.appendChild(userSelectionMenu)
 
-        document.querySelector('#userSelectionMenuId').addEventListener('change', (e) => {
+        document.querySelector('#userSelectionMenuId').addEventListener('click', (e) => {
             e.preventDefault()    
             userSelectionMenuSelected = e.target.value 
             console.log('---->userSelectionMenuId', userSelectionMenuSelected)
@@ -178,6 +184,23 @@ function GetAvailableUsers () {
         //return result
     })
 }
+
+function userleft () {
+    let availableUsers = '' 
+    return fetch('/userleft/' + userSelectionMenuSelected)
+    .then((response) => {
+        if (response.status === 200) {          
+            return response.json()
+        } else {
+            throw new Error('Unable to fetch token')
+        }
+    }).then((result) => {
+        console.log('---->User left', result)
+        //return result
+    })
+}
+
+
 
 
 // ***********Commented becasue the button joinbutton was removed
@@ -194,7 +217,7 @@ function GetAvailableUsers () {
 //Leave the channel before leaving the page
 window.onbeforeunload = function() {
     console.log('---->Leave Channel')
-    chatChannel.leave().then((result) => {console.log('---->Leaving the channel ' + result.friendlyName)}).catch((err) => {
+    chatChannel.leave().then((result) => {console.log('---->Leaving the channel ' + result.friendlyName)}).then(userleft).catch((err) => {
     console.log("Couldn't leave channel " + chatChannel.friendlyName + ' because ' + err)
     })  
 };
