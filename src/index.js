@@ -68,9 +68,8 @@ app.get('/users', (req, res) => {
 })
 
 app.get('/userleft/:username', (req, res) => {
-    console.log('User left request arrived')
     const id = req.params.username
-    console.log('idddd', id)
+    console.log('User left request arrived for ', id)
     //availableUsers = [{'username': 'User 1'}, {'username': 'User 2'}]
 
     availableUsers.push({'username': id}) 

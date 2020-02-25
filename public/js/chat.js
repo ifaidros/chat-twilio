@@ -195,6 +195,7 @@ function userleft () {
             throw new Error('Unable to fetch token')
         }
     }).then((result) => {
+        userSelectionMenuSelected = ''
         console.log('---->User left', result)
         //return result
     })
