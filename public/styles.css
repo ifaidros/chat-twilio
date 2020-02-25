@@ -8,7 +8,7 @@ body{
     background: rgb(138, 131, 131);
     width:100%;
     margin: 0 auto;
-    overflow:hidden;
+    overflow: auto;
 }
 
 #container{
@@ -70,9 +70,9 @@ button {
     border-bottom: 2px solid #153b24;
     cursor: pointer;
     color: white;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 300;
-    padding: .8rem;
+    padding: .4rem;
     transition: background .3s ease, color .3s ease;
 }
 

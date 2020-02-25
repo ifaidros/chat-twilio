@@ -11,15 +11,26 @@ app.use(helmet())
 app.use(express.json())
 app.use(express.static(publicDirectoryPath))
 
+let availableUsers = [{'username': 'User 1'}, {'username': 'User 2'}]
+let arrayss = []
+
 app.get('/token/:username', (req, res) => {
     const id = req.params.username
+
+    availableUsers = availableUsers.filter((user) => {
+        return !(req.params.username === user.username)
+    })
+
+    console.log('eventually the available users are', availableUsers)
+
     const token = createToken(id)
     console.log('the token is ' + token.token)
     // res.set({'Access-Control-Allow-Origin': '*'})
     // res.setHeader('Content-Type', 'application/json')
     res.send(token)
 })
- 
+
+//"Token Server" 
 function createToken(id) {    
     const AccessToken = require('twilio').jwt.AccessToken;
     const ChatGrant = AccessToken.ChatGrant;
@@ -49,7 +60,13 @@ function createToken(id) {
     }
 }
 
-
+app.get('/users', (req, res) => {
+    console.log('User availability request arrived')
+    //availableUsers = [{'username': 'User 1'}, {'username': 'User 2'}]
+    // res.set({'Access-Control-Allow-Origin': '*'})
+    // res.setHeader('Content-Type', 'application/json')
+    res.send(availableUsers)
+})
 
 
 
