@@ -75,7 +75,7 @@ button {
     border-bottom: 2px solid #153b24;
     cursor: pointer;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 300;
     padding: .4rem;
     transition: background .3s ease, color .3s ease;

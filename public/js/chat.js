@@ -45,6 +45,7 @@ document.querySelector('#btnGetToken').addEventListener('click', (e) => {
         ACCESS_TOKEN = token
         console.log('---->Access Token: ', ACCESS_TOKEN) 
         userSelectionMenu.remove()
+        //document.querySelector('#btnGetToken').disabled = true
         //GetAvailableUsers()        
         })
 })
@@ -201,6 +202,7 @@ function GetAvailableUsers () {
         document.querySelector('#userSelectionMenuId').addEventListener('click', (e) => {
             //e.preventDefault()    
             userSelectionMenuSelected = e.target.value 
+            document.querySelector('#btnGetToken').textContent = '1-Get Token'
             console.log('---->userSelectionMenuId', userSelectionMenuSelected)
         })
 
