@@ -95,6 +95,20 @@ document.querySelector('#btnJoinChannel').addEventListener('click', (e) => {
         chatChannel.join().then((result) => {console.log('---->Joined the channel ', result)}).catch((err) => {
             console.log("Couldn't join channel " + chatChannel.friendlyName + ' because ' + err)
         }) 
+
+
+        chatChannel.on('typingStarted', function(member) {
+            //process the member to show typing
+            console.log('typing')
+            //updateTypingIndicator(member, true);
+        })
+        
+        //set  the listener for the typing ended Channel event
+        chatChannel.on('typingEnded', function(member) {
+            //process the member to stop showing typing
+            console.log('typing')
+            //updateTypingIndicator(member, false);
+        })
     })
 
     chatClient.on('channelJoined', (channel) => {
@@ -106,6 +120,8 @@ document.querySelector('#btnJoinChannel').addEventListener('click', (e) => {
         let divOutput = document.querySelector('#output')
         divOutput.insertAdjacentHTML('beforeend', '<p>' + message.dateUpdated.toLocaleString() + '  ' + message.author + '  ' + message.body + '</p>')
     })
+
+
 })
 
 document.querySelector('#btnLeaveChannel').addEventListener('click', (e) => {
@@ -141,7 +157,14 @@ document.querySelector('#message-form').addEventListener('submit', (e) => {
     document.querySelector('#input_txt').value = ''
     document.querySelector('#input_txt').focus()      
 })
+
+document.querySelector('#input_txt').addEventListener('keydown', (e) => {
+    //e.preventDefault()
+    chatChannel.typing()
+})
    
+
+
 
 function GetAvailableUsers () {
     let availableUsers = '' 
@@ -172,7 +195,7 @@ function GetAvailableUsers () {
             userSelectionMenu.add(option, null)
         })
         divUsers.appendChild(userSelectionMenu)
-        document.querySelector("#userSelectionMenuId").focus()
+        //document.querySelector("#userSelectionMenuId").focus()
 
 
         document.querySelector('#userSelectionMenuId').addEventListener('click', (e) => {
