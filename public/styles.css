@@ -28,8 +28,11 @@ body{
     margin: 0 auto;
 }
 
-#users-list{
+option {
     cursor: pointer;
+}
+
+#users-list{
     background: rgb(96, 153, 199);
     width: 30%;
     height: 300px;
@@ -39,6 +42,7 @@ body{
     float: left;
     margin: 0 auto;
 }
+
 
 #chat-window{
     height: 300px;

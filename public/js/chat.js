@@ -172,9 +172,11 @@ function GetAvailableUsers () {
             userSelectionMenu.add(option, null)
         })
         divUsers.appendChild(userSelectionMenu)
+        document.querySelector("#userSelectionMenuId").focus()
+
 
         document.querySelector('#userSelectionMenuId').addEventListener('click', (e) => {
-            e.preventDefault()    
+            //e.preventDefault()    
             userSelectionMenuSelected = e.target.value 
             console.log('---->userSelectionMenuId', userSelectionMenuSelected)
         })
